@@ -1,5 +1,6 @@
 package com.projetofinal.api.domain.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,5 +21,6 @@ public class Atendimento {
 	private String hora;
 	private String assunto;
 	private String observacoes;
+	@Column(unique = true)
 	private String emailCliente;
 }
