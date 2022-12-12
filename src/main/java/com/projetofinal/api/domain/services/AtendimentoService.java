@@ -1,5 +1,7 @@
 package com.projetofinal.api.domain.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,16 @@ public class AtendimentoService implements IAtendimentoDomianService {
 	@Override
 	public Atendimento save(Atendimento atendimento) {
 		return atendimentoRepository.save(atendimento);
+	}
+
+	@Override
+	public List<Atendimento> findAll() {
+		return atendimentoRepository.findAllByOrderByAssuntoAsc();
+	}
+
+	@Override
+	public List<Atendimento> findAllById(Long idAtendimento) {
+		return atendimentoRepository.findAllByIdAtendimento(idAtendimento);
 	}
 
 	
