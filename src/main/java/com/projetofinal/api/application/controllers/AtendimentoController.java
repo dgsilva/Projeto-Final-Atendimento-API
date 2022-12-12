@@ -1,9 +1,13 @@
 package com.projetofinal.api.application.controllers;
 
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,5 +33,17 @@ public class AtendimentoController {
 	    AtendimentoGetDto response = modelMapper.map(atendimento, AtendimentoGetDto.class);
 	    return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
+	
+	@GetMapping()
+	public ResponseEntity<List<AtendimentoGetDto>> findAll(){
+	  ModelMapper modelMapper = new ModelMapper();
+	  List<Atendimento> atendimentos = atendimentoService.findAll();
+	  List<AtendimentoGetDto>dto = modelMapper.map(atendimentos, new TypeToken<List<AtendimentoGetDto>>(){  
+	  }.getType());
+	  return ResponseEntity.status(HttpStatus.OK).body(dto);
+	}
+	
+	
+	
 	
 }
