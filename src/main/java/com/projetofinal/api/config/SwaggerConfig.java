@@ -26,7 +26,7 @@ public class SwaggerConfig {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfo("Atendimento API - Antendimento", "API para controle de produtos", "Versão 1.0",
-				"http://www.cotiinformatica.com.br", null, null, null, Collections.emptyList());
+		return new ApiInfo("Atendimento API - Antendimento", "API para atendimento", "Versão 1.0",
+				"http://www.DBS.com.br", null, null, null, Collections.emptyList());
 	}
 }
