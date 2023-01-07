@@ -20,7 +20,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.projetofinal.api.application.dtos.response.AtendimentoEmailHelper;
 import com.projetofinal.api.application.dtos.response.AtendimentoGetDto;
 import com.projetofinal.api.application.dtos.resquest.AtendimentoDto;
-import com.projetofinal.api.application.dtos.resquest.AuthRequestModel;
 import com.projetofinal.api.application.dtos.resquest.EmailMessageDto;
 import com.projetofinal.api.domain.models.Atendimento;
 import com.projetofinal.api.domain.services.AtendimentoService;
@@ -54,10 +53,7 @@ public class AtendimentoController {
 		//Header -> ['Authorization', 'Bearer <<Token>>']
 		String acessToken = request.getHeader("Authorization").replace("Bearer", "").trim();
 		String user = authenticationService.getUserFromToken(acessToken);
-		
-//		AuthRequestModel authRequest = new AuthRequestModel();
-//		authRequest.setName(name);
-		
+
 		ModelMapper modelMapper = new ModelMapper();
 		Atendimento atendimento = atendimentoService.save(modelMapper.map(dto, Atendimento.class));
 		AtendimentoGetDto response = modelMapper.map(atendimento, AtendimentoGetDto.class);
